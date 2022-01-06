@@ -238,9 +238,9 @@ double ReferenceCalcMPIDForceKernel::execute(ContextImpl& context, bool includeF
     return static_cast<double>(energy);
 }
 
-void ReferenceCalcMPIDForceKernel::getInducedDipoles(ContextImpl& context, vector<Vec3>& outputDipoles) {
+void ReferenceCalcMPIDForceKernel::getInducedDipoles(ContextImpl& context, vector<double>& outputDipoles) {
     int numParticles = context.getSystem().getNumParticles();
-    outputDipoles.resize(numParticles);
+    outputDipoles.resize(numParticles * 3);
 
     // Create an MPIDReferenceForce to do the calculation.
     
@@ -252,8 +252,12 @@ void ReferenceCalcMPIDForceKernel::getInducedDipoles(ContextImpl& context, vecto
     vector<Vec3> inducedDipoles;
     MPIDReferenceForce->calculateInducedDipoles(posData, charges, dipoles, quadrupoles, octopoles, tholes,
             dampingFactors, polarity, axisTypes, multipoleAtomZs, multipoleAtomXs, multipoleAtomYs, multipoleAtomCovalentInfo, inducedDipoles);
-    for (int i = 0; i < numParticles; i++)
-        outputDipoles[i] = inducedDipoles[i];
+    for (int i = 0; i < numParticles; i++){
+        outputDipoles[3 * i ] = inducedDipoles[i][0];
+        outputDipoles[3 * i + 1] = inducedDipoles[i][1];
+        outputDipoles[3 * i + 2] = inducedDipoles[i][2];
+    }
+        
     delete MPIDReferenceForce;
 }
 
