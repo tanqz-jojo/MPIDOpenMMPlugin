@@ -82,7 +82,7 @@ public:
      */
     static void getCovalentDegree(const MPIDForce& force, std::vector<int>& covalentDegree);
     void getLabFramePermanentDipoles(ContextImpl& context, std::vector<Vec3>& dipoles);
-    void getInducedDipoles(ContextImpl& context, std::vector<Vec3>& dipoles);
+    void getInducedDipoles(ContextImpl& context, std::vector<double>& dipoles);
     void getTotalDipoles(ContextImpl& context, std::vector<Vec3>& dipoles);
 
     void getElectrostaticPotential(ContextImpl& context, const std::vector< Vec3 >& inputGrid,
