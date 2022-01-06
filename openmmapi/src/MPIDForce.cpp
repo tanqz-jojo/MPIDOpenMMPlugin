@@ -250,7 +250,7 @@ double MPIDForce::getDefaultTholeWidth() const {
     return defaultThole;
 }
 
-void MPIDForce::getInducedDipoles(Context& context, vector<Vec3>& dipoles) {
+void MPIDForce::getInducedDipoles(Context& context, vector<double>& dipoles) {
     dynamic_cast<MPIDForceImpl&>(getImplInContext(context)).getInducedDipoles(getContextImpl(context), dipoles);
 }
 
