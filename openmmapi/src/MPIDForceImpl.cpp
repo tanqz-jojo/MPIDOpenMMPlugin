@@ -213,7 +213,7 @@ void MPIDForceImpl::getLabFramePermanentDipoles(ContextImpl& context, vector<Vec
     kernel.getAs<CalcMPIDForceKernel>().getLabFramePermanentDipoles(context, dipoles);
 }
 
-void MPIDForceImpl::getInducedDipoles(ContextImpl& context, vector<Vec3>& dipoles) {
+void MPIDForceImpl::getInducedDipoles(ContextImpl& context, vector<double>& dipoles) {
     kernel.getAs<CalcMPIDForceKernel>().getInducedDipoles(context, dipoles);
 }
 
