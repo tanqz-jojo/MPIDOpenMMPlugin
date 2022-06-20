@@ -798,6 +798,15 @@ void MPIDReferenceForce::applyRotationMatrix(vector<MultipoleParticleData>& part
                                           multipoleAtomXs[ii] > -1 ? &particleData[multipoleAtomXs[ii]] : NULL,
                                           multipoleAtomYs[ii] > -1 ? &particleData[multipoleAtomYs[ii]] : NULL, axisTypes[ii]);
         }
+        // qiaozhu added for single ion or axistype=iso/no axistype atom
+        else {
+            particleData[ii].labPolarization[QXX] = particleData[ii].polarity[0];
+            particleData[ii].labPolarization[QXY] = 0.0;
+            particleData[ii].labPolarization[QXZ] = 0.0;
+            particleData[ii].labPolarization[QYY] = particleData[ii].polarity[1];
+            particleData[ii].labPolarization[QYZ] = 0.0;
+            particleData[ii].labPolarization[QZZ] = particleData[ii].polarity[2];
+        }
     }
 }
 

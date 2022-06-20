@@ -457,6 +457,13 @@ extern "C" __global__ void computeLabFrameMoments(real4* __restrict__ posq, int4
             labFrameOctopoles[7*atom+4] = molecularOctopoles[7*atom+4];
             labFrameOctopoles[7*atom+5] = molecularOctopoles[7*atom+5];
             labFrameOctopoles[7*atom+6] = molecularOctopoles[7*atom+6];
+            // qiaozhu added for single ion or axistype=iso/no axistype atom
+            labFramePolarizabilities[6*atom+0] = polarizability[3*atom+0];
+            labFramePolarizabilities[6*atom+1] = 0.0;
+            labFramePolarizabilities[6*atom+2] = 0.0;
+            labFramePolarizabilities[6*atom+3] = polarizability[3*atom+1];
+            labFramePolarizabilities[6*atom+4] = 0.0;
+            labFramePolarizabilities[6*atom+5] = polarizability[3*atom+2];
         }
     }
 }
