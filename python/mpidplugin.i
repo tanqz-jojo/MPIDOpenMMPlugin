@@ -1,5 +1,6 @@
 %module mpidplugin
 
+%include "factory.i"
 %import(module="openmm") "swig/OpenMMSwigHeaders.i"
 %include "swig/typemaps.i"
 
@@ -28,6 +29,9 @@ namespace std {
 import openmm as mm
 import openmm.unit as unit
 %}
+
+%include "openmm/Vec3.h"
+%template(vectorVec3) std::vector<OpenMM::Vec3>;
 
 /*
  * Add units to function outputs.
